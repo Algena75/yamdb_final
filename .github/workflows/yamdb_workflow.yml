@@ -1,4 +1,4 @@
-# .github/workflows/**main.yaml**
+# .github/workflows/**yamdb_workflow.yml**
 name: Yamdb workflow
 
 on: [push]
@@ -58,7 +58,6 @@ jobs:
         key: ${{ secrets.SSH_KEY }}
         passphrase: ${{ secrets.PASSPHRASE }}
         script: |
-#          sudo docker pull ${{ secrets.DOCKER_USERNAME }}/yamdb_final:latest
           cd ../infra/
           sudo docker-compose stop
           sudo docker-compose rm web
