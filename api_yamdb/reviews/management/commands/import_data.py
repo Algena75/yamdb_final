@@ -2,16 +2,15 @@ import csv
 
 from django.core.management.base import BaseCommand, CommandError
 from django.db import IntegrityError, OperationalError
-
-from ratings.models import (Category, Comment, Genre, Reviews, Title,
-                            GenreTitle, User)
+from reviews.models import (Category, Comment, Genre, GenreTitle, Review,
+                            Title, User)
 
 TABLE_MODEL = {
     'users': User,
     'category': Category,
     'genre': Genre,
     'titles': Title,
-    'review': Reviews,
+    'review': Review,
     'comments': Comment,
     'genre_title': GenreTitle,
 }

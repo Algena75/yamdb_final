@@ -1,10 +1,10 @@
-from api_yamdb.settings import RATING_SCORE
 from django.core.exceptions import ValidationError
 from django.core.validators import MaxValueValidator, MinValueValidator
 from rest_framework import serializers
 from rest_framework.response import Response
-
 from reviews.models import Category, Comment, Genre, Review, Title
+
+from api_yamdb.settings import RATING_SCORE
 
 
 class CommentSerializer(serializers.ModelSerializer):
@@ -43,6 +43,7 @@ class ReviewsSerializer(serializers.ModelSerializer):
             title_pk=self.request.data['title_id']
         ).exists():
             return Response({'Ошибка': "Title не найден"})
+        return None
 
     def validate_dup(self, request, data):
         if Review.objects.get(

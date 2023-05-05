@@ -6,10 +6,9 @@ from rest_framework.pagination import PageNumberPagination
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
+from reviews.models import Category, Comment, Genre, Review, Title
 from users.permissions import (IsAdminOrReadOnly,
                                IsAuthorModeratorAdminSuperuser)
-
-from reviews.models import Category, Comment, Genre, Review, Title
 
 from .filters import TitleFilters
 from .mixins import ListCreateDestroyMixin
@@ -40,9 +39,7 @@ class CommentViewSet(ModelViewSet):
     ]
 
     def get_queryset(self):
-        queryset = Comment.objects.filter(
-            review_id=self.kwargs['review_id'])
-        return queryset
+        return Comment.objects.filter(review_id=self.kwargs['review_id'])
 
     def perform_create(self, serializer):
         review = get_object_or_404(Review, id=self.kwargs['review_id'])

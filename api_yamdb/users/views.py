@@ -9,7 +9,6 @@ from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework_simplejwt.tokens import RefreshToken
-
 from users.models import User
 
 from .permissions import IsAdmin
@@ -70,17 +69,16 @@ class UserRegView(APIView):
                 )
             send_confirmation_code(user)
             return Response(serializer.initial_data, status=status.HTTP_200_OK)
-        else:
-            if serializer.is_valid():
-                user, created = User.objects.update_or_create(
-                    **serializer.validated_data
-                )
-                send_confirmation_code(user)
-                return Response(serializer.data, status=status.HTTP_200_OK)
-            return Response(
-                serializer.errors,
-                status=status.HTTP_400_BAD_REQUEST
+        if serializer.is_valid():
+            user, created = User.objects.update_or_create(
+                **serializer.validated_data
             )
+            send_confirmation_code(user)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        return Response(
+            serializer.errors,
+            status=status.HTTP_400_BAD_REQUEST
+        )
 
 
 @permission_classes([AllowAny])

@@ -1,7 +1,8 @@
-from api_yamdb.settings import RATING_SCORE
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 from users.models import User
+
+from api_yamdb.settings import RATING_SCORE
 
 from .validators import year_validator
 
