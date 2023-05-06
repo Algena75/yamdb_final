@@ -1,10 +1,15 @@
 ### Сервис позволяющий пользователям оценивать и писать свои рецензии на любые категории творчества
 api_yamdb
 
+![yamdb_workflow.yml](https://github.com/Algena75/yamdb_final/actions/workflows/yamdb_workflow.yml/badge.svg)
+
 ## Команда разработчиков:
 Самсонов Дмитрий
 Никита Ковалев
 Алексей Наумов
+
+## Проект развернут на сервере:
+http://http://158.160.98.187/
 
 ## Используемые технолологии:
 
@@ -102,5 +107,3 @@ http://127.0.0.1/api/v1/titles/1/reviews/
 ```
 http://127.0.0.1/api/v1/titles/1/reviews/1/comments/
 ```
-
-![yamdb_workflow.yml](https://github.com/Algena75/yamdb_final/actions/workflows/yamdb_workflow.yml/badge.svg)
